@@ -18,7 +18,7 @@ phases:
     commands:
       - cd day14/simple-python-app
       - echo "building docker image"
-      - docker build -t "$DOCKER-REGISTRY_URL/DOCKER-REGISTRY_USERNAME/simple-python-app:latest"
+      - docker build -t "$DOCKER-REGISTRY_URL/DOCKER-REGISTRY_USERNAME/simple-python-app:latest" .
       - docker push "$DOCKER-REGISTRY_URL/DOCKER-REGISTRY_USERNAME/sample-python-app:latest"
   post_build:
     commands:
