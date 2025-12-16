@@ -10,7 +10,7 @@ env:
 phases:
   install:
     runtime-versions:
-    python: 3.11
+      python: 3.11
   pre_build:
     commands:
       - pip install -r day14/simple-python-app/requirements.txt
