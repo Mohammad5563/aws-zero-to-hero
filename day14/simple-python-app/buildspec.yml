@@ -1,0 +1,25 @@
+version: 0.2
+
+env:
+  parameter-store:
+  DOCKER-REGISTRY_USERNAME: "/myapp/docker-credentials/username"
+  DOCKER-REGISTRY_PASSWORD: "/myapp/docker-credentials/password"
+  DOCKER-REGISTRY_URL: "/myapp/docker-registry/url"
+    
+    
+phases:
+  install:
+  runtime-versions:
+    python: 3.11
+  pre_build:
+    commands:
+      - pip install -r day14/simple-python-app/requirements.txt
+  build:
+    commands:
+      - cd day14/simple-python-app
+      - echo "building docker image"
+      - docker build -t "$DOCKER-REGISTRY_URL/DOCKER-REGISTRY_USERNAME/simple-python-app:latest"
+      - docker push "$DOCKER-REGISTRY_URL/DOCKER-REGISTRY_USERNAME/sample-python-app:latest"
+  post_build:
+    commands:
+      - echo "bUild is sucess"
